@@ -29,10 +29,10 @@ formik['values'];
   /* <SmartInput name='title' formik={formik} />; */
 }
 
-function SmartInput({ name, formik }) {
+function SmartInput({ name, formik, type = 'text', placeholder }) {
   return (
     <label className='block mb-4'>
-      <span className='text-lg block'>{name}</span>
+      <span className='text-lg block first-letter:uppercase'>{name}</span>
       <input
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
@@ -43,8 +43,8 @@ function SmartInput({ name, formik }) {
             ? 'border-red-500 bg-red-50'
             : 'border-slate-300'
         } `}
-        type='text'
-        placeholder='Enter Title'
+        type={type}
+        placeholder={placeholder || 'Enter ' + name}
       />
       {formik.touched[name] && formik.errors[name] && (
         <p className='bg-red-100 text-red-800 rounded-md px-4 py-1 mt-2'>{formik.errors[name]}</p>
@@ -74,6 +74,7 @@ export default function AddProduct() {
       category: Yup.string().min(3).max(15, 'Max 15 simboliu').required(),
       price: Yup.number().min(0).max(999999999).required(),
       rating: Yup.number().min(0).max(5).required(),
+      stock: Yup.number().min(0).integer().required(),
       description: Yup.string().min(5).max(500).required(),
       adminEmail: Yup.string().email().required(),
     }),
@@ -124,75 +125,11 @@ export default function AddProduct() {
       <div>
         <p>Title: {formik.values.title}</p>
       </div>
-      <form className='grid grid-cols-2 gap-x-5' onSubmit={formik.handleSubmit}>
-        <label className='block mb-4'>
-          <span className='text-lg block'>Title</span>
-          <input
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.title}
-            name='title'
-            className={`border w-full px-3 py-[6px] rounded-md ${
-              formik.touched.title && formik.errors.title
-                ? 'border-red-500 bg-red-50'
-                : 'border-slate-300'
-            } `}
-            type='text'
-            placeholder='Enter Title'
-          />
-          {formik.touched.title && formik.errors.title && (
-            <p className='bg-red-100 text-red-800 rounded-md px-4 py-1 mt-2'>
-              {formik.errors.title}
-            </p>
-          )}
-        </label>
-        <label className='block mb-4'>
-          <span className='text-lg block'>Price</span>
-          <input
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.price}
-            name='price'
-            className='border w-full px-3 py-[6px] border-slate-300 rounded-md '
-            type='number'
-            step={0.01}
-            placeholder='Enter Price'
-          />
-          {formik.touched.price && formik.errors.price && (
-            <p className='bg-red-100 text-red-800 rounded-md px-4 py-1 mt-2'>
-              {formik.errors.price}
-            </p>
-          )}
-        </label>
-        <label className='block mb-4'>
-          <span className='text-lg block'>Rating</span>
-          <input
-            onChange={formik.handleChange}
-            value={formik.values.rating}
-            name='rating'
-            className='border w-full px-3 py-[6px] border-slate-300 rounded-md '
-            type='number'
-            step={0.1}
-            placeholder='Enter Rating'
-          />
-          {formik.errors.rating && (
-            <p className='bg-red-100 text-red-800 rounded-md px-4 py-1 mt-2'>
-              {formik.errors.rating}
-            </p>
-          )}
-        </label>
-        <label className='block mb-4'>
-          <span className='text-lg block'>Stock</span>
-          <input
-            onChange={formik.handleChange}
-            value={formik.values.stock}
-            name='stock'
-            className='border w-full px-3 py-[6px] border-slate-300 rounded-md '
-            type='number'
-            step={1}
-            placeholder='Enter Stock'
-          />
-        </label>
+      <form noValidate className='grid grid-cols-2 gap-x-5' onSubmit={formik.handleSubmit}>
+        <SmartInput name={'title'} formik={formik} placeholder='Iveskite Antraste' />
+        <SmartInput name={'price'} type='number' formik={formik} />
+        <SmartInput name={'rating'} type='number' formik={formik} />
+        <SmartInput name={'stock'} type='number' formik={formik} />
 
         <label className='block mb-4'>
           <span className='text-lg block'>Brand</span>
@@ -207,29 +144,12 @@ export default function AddProduct() {
             <option value='google'>Google</option>
           </select>
         </label>
-        <label className='block mb-4'>
-          <span className='text-lg block'>Category</span>
-          <input
-            onChange={formik.handleChange}
-            value={formik.values.category}
-            name='category'
-            className='border w-full px-3 py-[6px] border-slate-300 rounded-md '
-            type='text'
-            placeholder='Enter Category'
-          />
-        </label>
-        <label className='block mb-4 '>
-          <span className='text-lg block'>Thumbnail</span>
-          <input
-            onChange={formik.handleChange}
-            value={formik.values.thumbnail}
-            name='thumbnail'
-            className='border w-full px-3 py-[6px] border-slate-300 rounded-md '
-            type='text'
-            placeholder='Enter Thumbnail'
-          />
-        </label>
-        <label className='block mb-4'>
+
+        <SmartInput name={'category'} formik={formik} />
+        <SmartInput name={'thumbnail'} formik={formik} />
+        <SmartInput name={'adminEmail'} type='email' formik={formik} />
+
+        {/* <label className='block mb-4'>
           <span className='text-lg block'>Admin Email</span>
           <input
             onChange={formik.handleChange}
@@ -244,7 +164,7 @@ export default function AddProduct() {
               {formik.errors.adminEmail}
             </p>
           )}
-        </label>
+        </label> */}
         <label className='block mb-4 col-span-2'>
           <span className='text-lg block'>Description</span>
           <textarea
