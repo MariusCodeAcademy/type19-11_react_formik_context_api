@@ -93,14 +93,16 @@ export default function AddProduct() {
 
         <label className='block mb-4'>
           <span className='text-lg block'>Brand</span>
-          <input
+          <select
             onChange={formik.handleChange}
             value={formik.values.brand}
-            name='brand'
             className='border w-full px-3 py-[6px] border-slate-300 rounded-md '
-            type='text'
-            placeholder='Enter Brand'
-          />
+            name='brand'
+            id='brand'>
+            <option value='apple'>Apple</option>
+            <option value='samsung'>Samsung</option>
+            <option value='google'>Google</option>
+          </select>
         </label>
         <label className='block mb-4'>
           <span className='text-lg block'>Category</span>
