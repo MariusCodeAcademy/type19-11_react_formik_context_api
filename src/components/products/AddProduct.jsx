@@ -20,7 +20,7 @@ export default function AddProduct() {
     initialValues: {
       title: '',
       price: '',
-      rating: '4.8',
+      rating: '',
       stock: '50',
       // description: 'Very good phone, but very expensive, makes you look rich',
       description: '',
@@ -28,12 +28,16 @@ export default function AddProduct() {
       brand: 'apple',
       category: 'smartphones',
       thumbnail: '',
-      adminEmail: 'admin@email.com',
+      adminEmail: '',
     },
     validationSchema: Yup.object({
       title: Yup.string().min(3).max(15, 'Gal galetumet trumpiau bisky').required(),
+      thumbnail: Yup.string().min(3).required(),
+      category: Yup.string().min(3).max(15, 'Max 15 simboliu').required(),
       price: Yup.number().min(0).max(999999999).required(),
+      rating: Yup.number().min(0).max(5).required(),
       description: Yup.string().min(5).max(500).required(),
+      adminEmail: Yup.string().email().required(),
     }),
     onSubmit: (values) => {
       // alert(JSON.stringify(values, null, 2));
@@ -74,6 +78,7 @@ export default function AddProduct() {
 
   // console.log('formik.values ===', formik.values);
   console.log('formik.errors ===', formik.errors);
+  console.log('formik.touched ===', formik.touched);
 
   return (
     <div className='container mb-96'>
@@ -86,15 +91,18 @@ export default function AddProduct() {
           <span className='text-lg block'>Title</span>
           <input
             onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
             value={formik.values.title}
             name='title'
             className={`border w-full px-3 py-[6px] rounded-md ${
-              formik.errors.title ? 'border-red-500 bg-red-50' : 'border-slate-300'
+              formik.touched.title && formik.errors.title
+                ? 'border-red-500 bg-red-50'
+                : 'border-slate-300'
             } `}
             type='text'
             placeholder='Enter Title'
           />
-          {formik.errors.title && (
+          {formik.touched.title && formik.errors.title && (
             <p className='bg-red-100 text-red-800 rounded-md px-4 py-1 mt-2'>
               {formik.errors.title}
             </p>
@@ -104,6 +112,7 @@ export default function AddProduct() {
           <span className='text-lg block'>Price</span>
           <input
             onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
             value={formik.values.price}
             name='price'
             className='border w-full px-3 py-[6px] border-slate-300 rounded-md '
@@ -111,7 +120,7 @@ export default function AddProduct() {
             step={0.01}
             placeholder='Enter Price'
           />
-          {formik.errors.price && (
+          {formik.touched.price && formik.errors.price && (
             <p className='bg-red-100 text-red-800 rounded-md px-4 py-1 mt-2'>
               {formik.errors.price}
             </p>
@@ -128,6 +137,11 @@ export default function AddProduct() {
             step={0.1}
             placeholder='Enter Rating'
           />
+          {formik.errors.rating && (
+            <p className='bg-red-100 text-red-800 rounded-md px-4 py-1 mt-2'>
+              {formik.errors.rating}
+            </p>
+          )}
         </label>
         <label className='block mb-4'>
           <span className='text-lg block'>Stock</span>
@@ -187,6 +201,11 @@ export default function AddProduct() {
             type='email'
             placeholder='Enter Admin Email'
           />
+          {formik.errors.adminEmail && (
+            <p className='bg-red-100 text-red-800 rounded-md px-4 py-1 mt-2'>
+              {formik.errors.adminEmail}
+            </p>
+          )}
         </label>
         <label className='block mb-4 col-span-2'>
           <span className='text-lg block'>Description</span>
@@ -197,6 +216,11 @@ export default function AddProduct() {
             className='border min-h-20 w-full px-3 py-[6px] border-slate-300 rounded-md '
             placeholder='Enter Description'
           />
+          {formik.errors.description && (
+            <p className='bg-red-100 text-red-800 rounded-md px-4 py-1 mt-2'>
+              {formik.errors.description}
+            </p>
+          )}
         </label>
         <button
           className='mt-6 place-self-start text-lg border px-6 py-2 border-slate-600 rounded-md hover:bg-indigo-600 hover:text-white transition-colors '
