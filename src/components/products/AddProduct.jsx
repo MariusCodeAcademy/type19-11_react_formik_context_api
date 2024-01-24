@@ -16,20 +16,35 @@ const product = {
 export default function AddProduct() {
   const formik = useFormik({
     initialValues: {
-      title: '',
-      price: '',
-      rating: '',
-      stock: '',
-      description: '',
+      title: 'Iphone 15',
+      price: '999',
+      rating: '4.8',
+      stock: '50',
+      description: 'Very good phone, but very expensive, makes you look rich',
       isOnSale: false,
-      brand: '',
-      category: '',
+      brand: 'apple',
+      category: 'smartphones',
       thumbnail: '',
-      adminEmail: '',
+      adminEmail: 'admin@email.com',
     },
     onSubmit: (values) => {
       alert(JSON.stringify(values, null, 2));
       // fetch
+      // ulr: https://dummyjson.com/products/add
+      fetch('https://dummyjson.com/products/add', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(values),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log('data ===', data);
+        })
+        .catch((error) => {
+          console.warn('ivyko klaida:', error);
+        });
     },
   });
 
