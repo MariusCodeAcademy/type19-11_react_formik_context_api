@@ -1,4 +1,6 @@
+import axios from 'axios';
 import { useFormik } from 'formik';
+import * as Yup from 'yup';
 
 const product = {
   title: 'iPhone 9',
@@ -16,39 +18,62 @@ const product = {
 export default function AddProduct() {
   const formik = useFormik({
     initialValues: {
-      title: 'Iphone 15',
-      price: '999',
+      title: '',
+      price: '',
       rating: '4.8',
       stock: '50',
-      description: 'Very good phone, but very expensive, makes you look rich',
+      // description: 'Very good phone, but very expensive, makes you look rich',
+      description: '',
       isOnSale: false,
       brand: 'apple',
       category: 'smartphones',
       thumbnail: '',
       adminEmail: 'admin@email.com',
     },
+    validationSchema: Yup.object({
+      title: Yup.string().min(3).max(15, 'Gal galetumet trumpiau bisky').required(),
+      price: Yup.number().min(0).max(999999999).required(),
+      description: Yup.string().min(5).max(500).required(),
+    }),
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+      // alert(JSON.stringify(values, null, 2));
       // fetch
       // ulr: https://dummyjson.com/products/add
-      fetch('https://dummyjson.com/products/add', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(values),
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          console.log('data ===', data);
-        })
-        .catch((error) => {
-          console.warn('ivyko klaida:', error);
-        });
+      // sendFetch(values);
+      sendAxios(values);
     },
   });
 
-  console.log('formik.values ===', formik.values);
+  function sendAxios(dataToSend) {
+    axios
+      .post('https://dummyjson.com/products/add', dataToSend)
+      .then((resp) => {
+        console.log('resp ===', resp);
+      })
+      .catch((error) => {
+        console.warn('ivyko klaida:', error);
+      });
+  }
+
+  function sendFetch(dataToSend) {
+    fetch('https://dummyjson.com/products/add', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(dataToSend),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log('data ===', data);
+      })
+      .catch((error) => {
+        console.warn('ivyko klaida:', error);
+      });
+  }
+
+  // console.log('formik.values ===', formik.values);
+  console.log('formik.errors ===', formik.errors);
 
   return (
     <div className='container mb-96'>
@@ -63,11 +88,17 @@ export default function AddProduct() {
             onChange={formik.handleChange}
             value={formik.values.title}
             name='title'
-            className='border w-full px-3 py-[6px] border-slate-300 rounded-md '
+            className={`border w-full px-3 py-[6px] rounded-md ${
+              formik.errors.title ? 'border-red-500 bg-red-50' : 'border-slate-300'
+            } `}
             type='text'
             placeholder='Enter Title'
           />
-          {/* <p className='bg-red-300 text-red-800 px-4 py-1'>Klaida</p> */}
+          {formik.errors.title && (
+            <p className='bg-red-100 text-red-800 rounded-md px-4 py-1 mt-2'>
+              {formik.errors.title}
+            </p>
+          )}
         </label>
         <label className='block mb-4'>
           <span className='text-lg block'>Price</span>
@@ -80,6 +111,11 @@ export default function AddProduct() {
             step={0.01}
             placeholder='Enter Price'
           />
+          {formik.errors.price && (
+            <p className='bg-red-100 text-red-800 rounded-md px-4 py-1 mt-2'>
+              {formik.errors.price}
+            </p>
+          )}
         </label>
         <label className='block mb-4'>
           <span className='text-lg block'>Rating</span>
