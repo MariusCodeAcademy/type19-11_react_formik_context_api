@@ -10,6 +10,7 @@ const product = {
   brand: 'Apple',
   category: 'smartphones',
   thumbnail: '...',
+  adminEmail: '',
 };
 
 export default function AddProduct() {
@@ -19,6 +20,9 @@ export default function AddProduct() {
       price: '',
       rating: '',
       stock: '',
+    },
+    onSubmit: (values) => {
+      alert(JSON.stringify(values, null, 2));
     },
   });
 
@@ -30,7 +34,7 @@ export default function AddProduct() {
       <div>
         <p>Title: {formik.values.title}</p>
       </div>
-      <form>
+      <form onSubmit={formik.handleSubmit}>
         <label className='block mb-4'>
           <span className='text-lg block'>Title</span>
           <input
