@@ -7,7 +7,7 @@ import axios from 'axios';
 import * as Yup from 'yup';
 import { useState } from 'react';
 
-export default function Login() {
+export default function Login({ onLogin }) {
   // 1. sukurti state isError
   const [isError, setIsError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -49,7 +49,8 @@ export default function Login() {
         console.log('resp ===', resp);
         console.log('resp.data ===', resp.data);
         const token = resp.data.token;
-        localStorage.setItem('userToken', token);
+        onLogin(token);
+        // localStorage.setItem('userToken', token);
         // redirect
       })
       .catch((error) => {
