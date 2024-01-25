@@ -9,8 +9,8 @@ import * as Yup from 'yup';
 export default function Login() {
   const formik = useFormik({
     initialValues: {
-      email: '',
-      password: '',
+      email: 'kminchelle',
+      password: '0lelplR',
     },
     validationSchema: Yup.object({
       email: Yup.string().min(4).max(255).required(),
@@ -41,6 +41,9 @@ export default function Login() {
       .then((resp) => {
         console.log('resp ===', resp);
         console.log('resp.data ===', resp.data);
+        const token = resp.data.token;
+        localStorage.setItem('userToken', token);
+        // redirect
       })
       .catch((error) => {
         console.warn('ivyko klaida:', error);
