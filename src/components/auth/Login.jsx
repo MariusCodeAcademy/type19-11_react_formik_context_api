@@ -4,6 +4,7 @@ import { useFormik } from 'formik';
 import SmartInput from '../UI/SmartInput';
 import Btn from '../UI/Btn';
 import axios from 'axios';
+import * as Yup from 'yup';
 
 export default function Login() {
   const formik = useFormik({
@@ -11,6 +12,10 @@ export default function Login() {
       email: '',
       password: '',
     },
+    validationSchema: Yup.object({
+      email: Yup.string().min(4).max(255).required(),
+      password: Yup.string().min(4).max(255).required(),
+    }),
     onSubmit: (values) => {
       console.log(values);
       sendAxiosRequest({
