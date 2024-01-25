@@ -53,6 +53,7 @@ export default function Login({ onLogin }) {
         console.log('resp.data ===', resp.data);
         const token = resp.data.token;
         onLogin(token);
+        // onLogin(token, email);
 
         // redirect
         // navigate('/products');
