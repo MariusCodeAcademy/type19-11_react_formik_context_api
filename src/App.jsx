@@ -11,16 +11,19 @@ import AddProductPage from './pages/AddProductPage';
 import UnAuthorizedPage from './pages/UnAuthorizedPage';
 
 export default function App() {
-  const [token, setToken] = useState('');
+  const tokenFromStorage = localStorage.getItem('userToken');
+  const [token, setToken] = useState(tokenFromStorage || '');
   const [email, setEmail] = useState('');
 
   function handleLogin(gotToken) {
     console.log('gotToken ===', gotToken);
     setToken(gotToken);
+    localStorage.setItem('userToken', gotToken);
   }
 
   function handleLogout() {
     setToken('');
+    localStorage.removeItem('userToken');
   }
 
   const isUserLoggedIn = Boolean(token);

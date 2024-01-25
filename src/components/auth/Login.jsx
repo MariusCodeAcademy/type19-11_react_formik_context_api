@@ -53,7 +53,7 @@ export default function Login({ onLogin }) {
         console.log('resp.data ===', resp.data);
         const token = resp.data.token;
         onLogin(token);
-        // localStorage.setItem('userToken', token);
+
         // redirect
         // navigate('/products');
       })
