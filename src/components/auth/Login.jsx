@@ -5,9 +5,12 @@ import SmartInput from '../UI/SmartInput';
 import Btn from '../UI/Btn';
 import axios from 'axios';
 import * as Yup from 'yup';
+import { useState } from 'react';
 
 export default function Login() {
   // 1. sukurti state isError
+  const [isError, setIsError] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   const formik = useFormik({
     initialValues: {
@@ -19,6 +22,8 @@ export default function Login() {
       password: Yup.string().min(4).max(255).required(),
     }),
     onSubmit: (values) => {
+      setIsError('');
+      setIsLoading(true);
       console.log(values);
       sendAxiosRequest({
         username: values.email,
@@ -51,6 +56,10 @@ export default function Login() {
         console.warn('ivyko klaida:', error);
         console.log('error.response.data ===', error.response.data); // axios klaida back
         // 2. Set errror
+        setIsError(error.response.data.message);
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   }
 
@@ -61,12 +70,25 @@ export default function Login() {
       <h2 className='text-3xl mb-8'>Login</h2>
 
       {/* 3. Show error in p tag formated as errror */}
+      {isError && (
+        <p className='text-2xl text-center border text-red-500 my-3 border-red-500 rounded-md px-5 py-3'>
+          {isError}
+        </p>
+      )}
 
-      <form onSubmit={formik.handleSubmit}>
-        <SmartInput name={'email'} formik={formik} />
-        <SmartInput type='password' name={'password'} formik={formik} />
-        <Btn type='submit'>Login</Btn>
-      </form>
+      {isLoading && (
+        <h2 className='text-2xl text-center border text-blue-500 my-3 border-blue-500 rounded-md px-5 py-3'>
+          Loading...
+        </h2>
+      )}
+
+      {!isLoading && (
+        <form onSubmit={formik.handleSubmit}>
+          <SmartInput name={'email'} formik={formik} />
+          <SmartInput type='password' name={'password'} formik={formik} />
+          <Btn type='submit'>Login</Btn>
+        </form>
+      )}
     </div>
   );
 }
