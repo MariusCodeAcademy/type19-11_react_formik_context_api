@@ -98,7 +98,7 @@ export default function AddProduct() {
   console.log('formik.touched ===', formik.touched);
 
   return (
-    <div className='container mb-96'>
+    <div className='mb-96'>
       <h2 className='text-4xl my-5'>Create new product</h2>
       <div>
         <p>Title: {formik.values.title}</p>

@@ -67,7 +67,7 @@ export default function Login({ onLogin }) {
   // 4 ivalyti klaida jei klaidos nera
 
   return (
-    <div className='container'>
+    <div className=''>
       <h2 className='text-3xl mb-8'>Login</h2>
 
       {/* 3. Show error in p tag formated as errror */}
