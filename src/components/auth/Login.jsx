@@ -7,6 +7,8 @@ import axios from 'axios';
 import * as Yup from 'yup';
 
 export default function Login() {
+  // 1. sukurti state isError
+
   const formik = useFormik({
     initialValues: {
       email: 'kminchelle',
@@ -48,12 +50,17 @@ export default function Login() {
       .catch((error) => {
         console.warn('ivyko klaida:', error);
         console.log('error.response.data ===', error.response.data); // axios klaida back
+        // 2. Set errror
       });
   }
+
+  // 4 ivalyti klaida jei klaidos nera
 
   return (
     <div className='container'>
       <h2 className='text-3xl mb-8'>Login</h2>
+
+      {/* 3. Show error in p tag formated as errror */}
 
       <form onSubmit={formik.handleSubmit}>
         <SmartInput name={'email'} formik={formik} />
