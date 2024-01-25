@@ -54,7 +54,12 @@ export default function AddProduct() {
       rating: Yup.number().min(0).max(5).required(),
       stock: Yup.number().min(0).integer().required(),
       description: Yup.string().min(5).max(500).required(),
-      adminEmail: Yup.string().email().required(),
+      adminEmail: Yup.string()
+        .matches(
+          /^[a-ząčęėįšųūA-ZĄČĘĖĮŠŲŪ0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
+          'Patikrinkite email',
+        )
+        .required(),
     }),
     onSubmit: (values) => {
       // alert(JSON.stringify(values, null, 2));

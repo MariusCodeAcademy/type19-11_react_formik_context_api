@@ -19,11 +19,15 @@ export default function App() {
     setToken(gotToken);
   }
 
+  function handleLogout() {
+    setToken('');
+  }
+
   const isUserLoggedIn = Boolean(token);
   console.log('isUserLoggedIn ===', isUserLoggedIn);
   return (
     <div className=''>
-      <Header isUserLoggedIn={isUserLoggedIn} />
+      <Header isUserLoggedIn={isUserLoggedIn} onLogout={handleLogout} />
       <Routes>
         <Route path='/' element={<HomePage />} />
         <Route
