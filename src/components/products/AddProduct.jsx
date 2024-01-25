@@ -1,6 +1,8 @@
 import axios from 'axios';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import Btn from '../UI/Btn';
+import SmartInput from '../UI/SmartInput';
 
 const product = {
   title: 'iPhone 9',
@@ -156,11 +158,7 @@ export default function AddProduct() {
             </p>
           )}
         </label>
-        <button
-          className='mt-6 place-self-start text-lg border px-6 py-2 border-slate-600 rounded-md hover:bg-indigo-600 hover:text-white transition-colors '
-          type='submit'>
-          Add
-        </button>
+        <Btn type='submit'>Login</Btn>
       </form>
     </div>
   );

@@ -2,6 +2,7 @@
 
 import { useFormik } from 'formik';
 import SmartInput from '../UI/SmartInput';
+import Btn from '../UI/Btn';
 
 export default function Login() {
   const formik = useFormik({
@@ -18,7 +19,7 @@ export default function Login() {
       <form>
         <SmartInput name={'email'} formik={formik} />
         <SmartInput type='password' name={'password'} formik={formik} />
-        <button></button>
+        <Btn type='submit'>Login</Btn>
       </form>
     </div>
   );
