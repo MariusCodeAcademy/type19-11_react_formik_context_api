@@ -55,7 +55,7 @@ export default function Login({ onLogin }) {
         onLogin(token);
         // localStorage.setItem('userToken', token);
         // redirect
-        navigate('/products');
+        // navigate('/products');
       })
       .catch((error) => {
         console.warn('ivyko klaida:', error);
