@@ -10,3 +10,12 @@
 2. Registerr ![](assets/2024-01-24-12-08-00.png)
 
 3. List ![](assets/2024-01-24-12-07-36.png)
+
+## Navigation
+
+1. redirect
+
+```js
+const navigate = useNavigate();
+navigate('/products');
+```

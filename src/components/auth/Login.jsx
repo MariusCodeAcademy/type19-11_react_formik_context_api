@@ -6,8 +6,11 @@ import Btn from '../UI/Btn';
 import axios from 'axios';
 import * as Yup from 'yup';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function Login({ onLogin }) {
+  const navigate = useNavigate();
+
   // 1. sukurti state isError
   const [isError, setIsError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -52,6 +55,7 @@ export default function Login({ onLogin }) {
         onLogin(token);
         // localStorage.setItem('userToken', token);
         // redirect
+        navigate('/products');
       })
       .catch((error) => {
         console.warn('ivyko klaida:', error);
