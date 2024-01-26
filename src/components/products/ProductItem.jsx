@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import Btn from '../UI/Btn';
 import { useContext } from 'react';
-import AuthContext from '../../store/AuthContex';
+import AuthContext from '../../store/AuthProvider';
 
 export default function ProductItem({ item }) {
   // pasiimti context value
