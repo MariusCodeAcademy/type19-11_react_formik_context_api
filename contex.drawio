@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="o258WVKaufk4xDKRhMMw" name="Page-1">
-        <mxGraphModel dx="1694" dy="1635" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="1561" dy="1635" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -21,6 +21,17 @@
                 </mxCell>
                 <mxCell id="14" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="4" target="5">
                     <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="25" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="4" target="23">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="32" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0;exitY=0.75;exitDx=0;exitDy=0;" edge="1" parent="1" source="4" target="30">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="240" y="280"/>
+                            <mxPoint x="130" y="280"/>
+                        </Array>
+                    </mxGeometry>
                 </mxCell>
                 <mxCell id="4" value="&amp;lt;Routes/&amp;gt;" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;" vertex="1" parent="1">
                     <mxGeometry x="240" y="200" width="460" height="60" as="geometry"/>
@@ -60,6 +71,36 @@
                 </mxCell>
                 <mxCell id="22" value="&lt;div style=&quot;color: rgb(204, 204, 204); background-color: rgb(31, 31, 31); font-family: &amp;quot;Cascadia code PL&amp;quot;, Menlo, Monaco, &amp;quot;Courier New&amp;quot;, monospace, Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 15px; line-height: 20px;&quot;&gt;&lt;div&gt;&lt;span style=&quot;color: #569cd6;&quot;&gt;const&lt;/span&gt; &lt;span style=&quot;color: #4fc1ff;&quot;&gt;ctx&lt;/span&gt; &lt;span style=&quot;color: #d4d4d4;&quot;&gt;=&lt;/span&gt; &lt;span style=&quot;color: #dcdcaa;&quot;&gt;useContext&lt;/span&gt;(&lt;span style=&quot;color: #4fc1ff;&quot;&gt;AuthContext&lt;/span&gt;);&lt;/div&gt;&lt;div&gt;&amp;nbsp; &lt;span style=&quot;color: #9cdcfe;&quot;&gt;console&lt;/span&gt;.&lt;span style=&quot;color: #dcdcaa;&quot;&gt;log&lt;/span&gt;(&lt;span style=&quot;color: #ce9178;&quot;&gt;'ctx ==='&lt;/span&gt;, &lt;span style=&quot;color: #4fc1ff;&quot;&gt;ctx&lt;/span&gt;);&lt;/div&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;" vertex="1" parent="1">
                     <mxGeometry x="-75" y="620" width="380" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="26" style="edgeStyle=orthogonalEdgeStyle;html=1;" edge="1" parent="1" source="23" target="24">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="23" value="&amp;lt;AuthPage/&amp;gt;" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;" vertex="1" parent="1">
+                    <mxGeometry x="570" y="300" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="24" value="&amp;lt;Login/&amp;gt;" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;" vertex="1" parent="1">
+                    <mxGeometry x="550" y="410" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="27" value="onLogin" style="ellipse;whiteSpace=wrap;html=1;rounded=1;sketch=1;" vertex="1" parent="1">
+                    <mxGeometry x="670" y="280" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="28" value="onLogin" style="ellipse;whiteSpace=wrap;html=1;rounded=1;sketch=1;" vertex="1" parent="1">
+                    <mxGeometry x="650" y="400" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="29" value="onLogin" style="ellipse;whiteSpace=wrap;html=1;rounded=1;sketch=1;" vertex="1" parent="1">
+                    <mxGeometry x="315" y="80" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="33" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="30" target="31">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="30" value="&amp;lt;Unauthorizes/&amp;gt;" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;" vertex="1" parent="1">
+                    <mxGeometry x="70" y="300" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="31" value="&amp;lt;Login/&amp;gt;" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;" vertex="1" parent="1">
+                    <mxGeometry x="-10" y="410" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="36" value="onLogin" style="ellipse;whiteSpace=wrap;html=1;rounded=1;sketch=1;" vertex="1" parent="1">
+                    <mxGeometry x="80" y="390" width="80" height="40" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>
