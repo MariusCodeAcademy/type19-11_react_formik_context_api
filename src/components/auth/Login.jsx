@@ -11,6 +11,9 @@ import { useNavigate } from 'react-router-dom';
 export default function Login({ onLogin }) {
   const navigate = useNavigate();
 
+  // Login
+  // pasiimti login is ctx
+
   // 1. sukurti state isError
   const [isError, setIsError] = useState('');
   const [isLoading, setIsLoading] = useState(false);

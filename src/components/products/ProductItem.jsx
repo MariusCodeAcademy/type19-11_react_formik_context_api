@@ -6,8 +6,8 @@ import AuthContext from '../../store/AuthContex';
 export default function ProductItem({ item }) {
   // pasiimti context value
 
-  const ctx = useContext(AuthContext);
-  console.log('ctx ===', ctx);
+  const { isUserLoggedIn, logout } = useContext(AuthContext);
+  // console.log('ctx ===', ctx);
 
   return (
     <li className='border '>
@@ -20,7 +20,7 @@ export default function ProductItem({ item }) {
           to={`/products/${item.id}`}>
           Read more
         </Link>
-        {ctx.isUserLoggedIn && <Btn onClick={ctx.logout}>Logout</Btn>}
+        {isUserLoggedIn && <Btn onClick={logout}>Logout</Btn>}
       </div>
     </li>
   );

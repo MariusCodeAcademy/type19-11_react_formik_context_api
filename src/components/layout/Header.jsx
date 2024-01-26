@@ -1,6 +1,10 @@
 import { Link, NavLink } from 'react-router-dom';
 
 export default function Header({ isUserLoggedIn, onLogout }) {
+  // header
+  // pasiimti isUserLoggedIn ir logout is conteksto
+  // ir panaudoti cia
+
   return (
     <header className='bg-slate-300'>
       <div className='container flex justify-between items-center'>
