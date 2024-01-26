@@ -1,12 +1,12 @@
-import { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import AuthContext from '../../store/AuthProvider';
+import { useAuthCtx } from '../../store/AuthProvider';
 
 export default function Header() {
   // header
   // pasiimti isUserLoggedIn ir logout is conteksto
   // ir panaudoti cia
-  const { logout, isUserLoggedIn } = useContext(AuthContext);
+  // const { logout, isUserLoggedIn } = useContext(AuthContext);
+  const { logout, isUserLoggedIn } = useAuthCtx();
 
   return (
     <header className='bg-slate-300'>

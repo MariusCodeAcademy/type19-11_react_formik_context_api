@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react';
+import { createContext, useContext, useState } from 'react';
 
 const AuthContext = createContext({
   isUserLoggedIn: false,
@@ -32,4 +32,12 @@ export default function AuthProvider({ children }) {
     logout: handleLogout,
   };
   return <AuthContext.Provider value={ctxValue}>{children}</AuthContext.Provider>;
+}
+
+// custom hook
+
+export function useAuthCtx() {
+  // const ctx = useContext(AuthContext);
+  // return ctx;
+  return useContext(AuthContext);
 }
