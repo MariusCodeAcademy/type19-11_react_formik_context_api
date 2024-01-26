@@ -7,12 +7,14 @@ import axios from 'axios';
 import * as Yup from 'yup';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAuthCtx } from '../../store/AuthProvider';
 
-export default function Login({ onLogin }) {
+export default function Login() {
   const navigate = useNavigate();
 
   // Login
   // pasiimti login is ctx
+  const { login } = useAuthCtx();
 
   // 1. sukurti state isError
   const [isError, setIsError] = useState('');
@@ -55,11 +57,11 @@ export default function Login({ onLogin }) {
         console.log('resp ===', resp);
         console.log('resp.data ===', resp.data);
         const token = resp.data.token;
-        onLogin(token);
+        login(token);
         // onLogin(token, email);
 
         // redirect
-        // navigate('/products');
+        navigate('/products');
       })
       .catch((error) => {
         console.warn('ivyko klaida:', error);

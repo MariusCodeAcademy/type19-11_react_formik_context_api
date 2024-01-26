@@ -30,6 +30,7 @@ export default function AuthProvider({ children }) {
   const ctxValue = {
     isUserLoggedIn: isUserLoggedIn,
     logout: handleLogout,
+    login: handleLogin,
   };
   return <AuthContext.Provider value={ctxValue}>{children}</AuthContext.Provider>;
 }
