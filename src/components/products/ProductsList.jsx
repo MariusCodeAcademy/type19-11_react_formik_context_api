@@ -3,6 +3,8 @@
 import axios from 'axios';
 import { useEffect } from 'react';
 import { useState } from 'react';
+import Btn from '../UI/Btn';
+import { Link } from 'react-router-dom';
 
 const singleProdItem = {
   id: 1,
@@ -40,12 +42,24 @@ function ProductsList() {
         console.warn('ivyko klaida:', error);
       });
   }, []);
+  // useEffect(() => {}, [])
 
   return (
     <div>
-      <ul>
+      <ul className='grid grid-cols-3 gap-3 mt-8'>
         {mainProductsArr.map((pObj) => (
-          <li key={pObj.id}>{pObj.title}</li>
+          <li className='border ' key={pObj.id}>
+            <img className='block h-64 w-full object-cover' src={pObj.thumbnail} alt={pObj.title} />
+            <div className='info p-4'>
+              <h3 className='text-lg font-semibold'>{pObj.title}</h3>
+              <p>Price: {pObj.price.toFixed(2)}</p>
+              <Link
+                className='mt-6 inline-block place-self-start text-lg border px-6 py-2 border-slate-600 rounded-md hover:bg-green-600 hover:text-white transition-colors'
+                to={`/products/${pObj.id}`}>
+                Read more
+              </Link>
+            </div>
+          </li>
         ))}
       </ul>
     </div>
