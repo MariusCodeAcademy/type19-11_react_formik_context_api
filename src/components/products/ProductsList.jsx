@@ -2,6 +2,7 @@
 
 import { Link } from 'react-router-dom';
 import useApiData from '../../hooks/useApiData';
+import ProductItem from './ProductItem';
 
 const singleProdItem = {
   id: 1,
@@ -48,18 +49,19 @@ function ProductsList() {
     <div>
       <ul className='grid grid-cols-3 gap-3 mt-8'>
         {mainProductsArr.map((pObj) => (
-          <li className='border ' key={pObj.id}>
-            <img className='block h-64 w-full object-cover' src={pObj.thumbnail} alt={pObj.title} />
-            <div className='info p-4'>
-              <h3 className='text-lg font-semibold'>{pObj.title}</h3>
-              <p>Price: {pObj.price.toFixed(2)}</p>
-              <Link
-                className='mt-6 inline-block place-self-start text-lg border px-6 py-2 border-slate-600 rounded-md hover:bg-green-600 hover:text-white transition-colors'
-                to={`/products/${pObj.id}`}>
-                Read more
-              </Link>
-            </div>
-          </li>
+          <ProductItem key={pObj.id} item={pObj} />
+          // <li className='border ' key={pObj.id}>
+          //   <img className='block h-64 w-full object-cover' src={pObj.thumbnail} alt={pObj.title} />
+          //   <div className='info p-4'>
+          //     <h3 className='text-lg font-semibold'>{pObj.title}</h3>
+          //     <p>Price: {pObj.price.toFixed(2)}</p>
+          //     <Link
+          //       className='mt-6 inline-block place-self-start text-lg border px-6 py-2 border-slate-600 rounded-md hover:bg-green-600 hover:text-white transition-colors'
+          //       to={`/products/${pObj.id}`}>
+          //       Read more
+          //     </Link>
+          //   </div>
+          // </li>
         ))}
       </ul>
     </div>
