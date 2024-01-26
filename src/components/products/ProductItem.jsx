@@ -1,7 +1,14 @@
 import { Link } from 'react-router-dom';
 import Btn from '../UI/Btn';
+import { useContext } from 'react';
+import AuthContext from '../../store/AuthContex';
 
 export default function ProductItem({ item }) {
+  // pasiimti context value
+
+  const ctx = useContext(AuthContext);
+  console.log('ctx ===', ctx);
+
   return (
     <li className='border '>
       <img className='block h-64 w-full object-cover' src={item.thumbnail} alt={item.title} />
