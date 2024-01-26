@@ -10,29 +10,6 @@ import SingleProductPage from './pages/SingleProductPage';
 import AuthContext from './store/AuthProvider';
 
 export default function App() {
-  const tokenFromStorage = localStorage.getItem('userToken');
-  const [token, setToken] = useState(tokenFromStorage || '');
-  const [email, setEmail] = useState('');
-
-  function handleLogin(gotToken) {
-    console.log('gotToken ===', gotToken);
-    setToken(gotToken);
-    localStorage.setItem('userToken', gotToken);
-  }
-
-  function handleLogout() {
-    setToken('');
-    localStorage.removeItem('userToken');
-  }
-
-  const isUserLoggedIn = Boolean(token);
-  console.log('isUserLoggedIn ===', isUserLoggedIn);
-
-  const ctxValue = {
-    isUserLoggedIn: isUserLoggedIn,
-    logout: handleLogout,
-  };
-
   return (
     <div className=''>
       <Header isUserLoggedIn={isUserLoggedIn} onLogout={handleLogout} />

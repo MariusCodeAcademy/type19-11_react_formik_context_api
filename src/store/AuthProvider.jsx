@@ -1,4 +1,4 @@
-import { createContext } from 'react';
+import { createContext, useState } from 'react';
 
 const AuthContext = createContext({
   isUserLoggedIn: false,
@@ -9,9 +9,27 @@ const AuthContext = createContext({
 AuthContext.displayName = 'MusuAuthCtx';
 
 export default function AuthProvider({ children }) {
+  const tokenFromStorage = localStorage.getItem('userToken');
+  const [token, setToken] = useState(tokenFromStorage || '');
+  const [email, setEmail] = useState('');
+
+  function handleLogin(gotToken) {
+    console.log('gotToken ===', gotToken);
+    setToken(gotToken);
+    localStorage.setItem('userToken', gotToken);
+  }
+
+  function handleLogout() {
+    setToken('');
+    localStorage.removeItem('userToken');
+  }
+
+  const isUserLoggedIn = Boolean(token);
+  console.log('isUserLoggedIn ===', isUserLoggedIn);
+
   const ctxValue = {
-    isUserLoggedIn: false,
-    logout: () => {},
+    isUserLoggedIn: isUserLoggedIn,
+    logout: handleLogout,
   };
   return <AuthContext.Provider value={ctxValue}>{children}</AuthContext.Provider>;
 }
