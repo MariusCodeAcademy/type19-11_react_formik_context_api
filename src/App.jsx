@@ -46,7 +46,7 @@ export default function App() {
           path='/products/add'
           element={isUserLoggedIn ? <AddProductPage /> : <Navigate to={'/unauthorized'} />}
         />
-        <Route path='/products/:prodId' element={<SingleProductPage />} />
+        <Route path='/products/:prodId/' element={<SingleProductPage />} />
         <Route path='/unauthorized' element={<UnAuthorizedPage />} />
       </Routes>
     </div>
