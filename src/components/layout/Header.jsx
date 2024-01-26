@@ -1,9 +1,12 @@
+import { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import AuthContext from '../../store/AuthContex';
 
-export default function Header({ isUserLoggedIn, onLogout }) {
+export default function Header() {
   // header
   // pasiimti isUserLoggedIn ir logout is conteksto
   // ir panaudoti cia
+  const { logout, isUserLoggedIn } = useContext(AuthContext);
 
   return (
     <header className='bg-slate-300'>
@@ -35,7 +38,7 @@ export default function Header({ isUserLoggedIn, onLogout }) {
             <>
               <Link
                 to={'/auth/login'}
-                onClick={onLogout}
+                onClick={logout}
                 className='text-lg p-3 hover:bg-slate-700 hover:text-white'>
                 Logout
               </Link>
