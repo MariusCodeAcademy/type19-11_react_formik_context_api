@@ -26,23 +26,36 @@ const singleProdItem = {
   ],
 };
 
-function ProductsList() {
-  const [mainProductsArr, setMainProductsArr] = useState([]);
-  console.log('mainProductsArr ===', mainProductsArr);
-  console.log(' mainProductsArr[0] ===', JSON.stringify(mainProductsArr[0]));
+// our custom hook
+// yra funkcija kurioje mes galim naudoti hooks
+// turi prasideti zodeliu 'use'
+
+function useApiData(url) {
+  const [data, setData] = useState({});
+
   useEffect(() => {
     axios
-      .get('https://dummyjson.com/products')
+      .get(url)
       .then((resp) => {
         console.log('resp ===', resp);
-        const prodArr = resp.data.products;
-        setMainProductsArr(prodArr);
+        // const prodArr = resp.data
+        setData(resp.data);
       })
       .catch((error) => {
         console.warn('ivyko klaida:', error);
       });
-  }, []);
-  // useEffect(() => {}, [])
+  }, [url]);
+
+  return [data, setData];
+}
+
+function ProductsList() {
+  const [respObj, setRespObj] = useApiData('https://dummyjson.com/products');
+
+  const mainProductsArr = respObj.products || [];
+
+  console.log('mainProductsArr ===', mainProductsArr);
+  // console.log(' mainProductsArr[0] ===', JSON.stringify(mainProductsArr[0]));
 
   return (
     <div>

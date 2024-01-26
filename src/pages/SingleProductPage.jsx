@@ -7,6 +7,9 @@ export default function SingleProductPage() {
 
   console.log('prodId ===', prodId);
 
+  // parsiusti duomenis ir iskonsolinti sio produkto informacija
+  // su useApiData
+
   return (
     <div className='container'>
       <h1 className='text-3xl mb-5'>SingleProductPage</h1>
