@@ -18,4 +18,5 @@ export default function useApiData(url) {
   }, [url]);
 
   return [data, setData];
+  // return {data, setData}
 }

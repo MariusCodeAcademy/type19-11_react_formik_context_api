@@ -1,4 +1,5 @@
 import { useParams } from 'react-router-dom';
+import useApiData from '../hooks/useApiData';
 
 export default function SingleProductPage() {
   // pasiimti id current post
@@ -6,6 +7,10 @@ export default function SingleProductPage() {
   const { prodId } = useParams();
 
   console.log('prodId ===', prodId);
+
+  const [currentObj, setCurrentObj] = useApiData(`https://dummyjson.com/products/${prodId}`);
+
+  console.log('currentObj ===', currentObj);
 
   // parsiusti duomenis ir iskonsolinti sio produkto informacija
   // su useApiData
