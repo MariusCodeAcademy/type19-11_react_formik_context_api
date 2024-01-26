@@ -52,7 +52,8 @@ export default function Login() {
 
   function sendAxiosRequest(data) {
     axios
-      .post('https://dummyjson.com/auth/login', data)
+      // .post('https://dummyjson.com/auth/login', data)
+      .post('http://localhost:3000/api/auth/login', data)
       .then((resp) => {
         console.log('resp ===', resp);
         console.log('resp.data ===', resp.data);
