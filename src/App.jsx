@@ -28,7 +28,10 @@ export default function App() {
   const isUserLoggedIn = Boolean(token);
   console.log('isUserLoggedIn ===', isUserLoggedIn);
 
-  const ctxValue = 500;
+  const ctxValue = {
+    isUserLoggedIn: isUserLoggedIn,
+    logout: handleLogout,
+  };
 
   return (
     <AuthContext.Provider value={ctxValue}>

@@ -20,7 +20,7 @@ export default function ProductItem({ item }) {
           to={`/products/${item.id}`}>
           Read more
         </Link>
-        <Btn>Logout</Btn>
+        <Btn onClick={ctx.logout}>Logout</Btn>
       </div>
     </li>
   );

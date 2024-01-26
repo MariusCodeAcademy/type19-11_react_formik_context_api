@@ -1,11 +1,11 @@
 <mxfile host="65bd71144e">
     <diagram id="o258WVKaufk4xDKRhMMw" name="Page-1">
-        <mxGraphModel dx="1922" dy="1558" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="1694" dy="1635" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
                 <mxCell id="18" value="Context API" style="rounded=0;whiteSpace=wrap;html=1;sketch=1;" vertex="1" parent="1">
-                    <mxGeometry x="-110" y="-10" width="930" height="50" as="geometry"/>
+                    <mxGeometry x="-110" y="-10" width="930" height="690" as="geometry"/>
                 </mxCell>
                 <mxCell id="12" style="edgeStyle=orthogonalEdgeStyle;html=1;" edge="1" parent="1" source="2" target="4">
                     <mxGeometry relative="1" as="geometry"/>
@@ -57,6 +57,9 @@
                 </mxCell>
                 <mxCell id="20" value="Logout BTN" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;" vertex="1" parent="1">
                     <mxGeometry x="145" y="580" width="120" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="22" value="&lt;div style=&quot;color: rgb(204, 204, 204); background-color: rgb(31, 31, 31); font-family: &amp;quot;Cascadia code PL&amp;quot;, Menlo, Monaco, &amp;quot;Courier New&amp;quot;, monospace, Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 15px; line-height: 20px;&quot;&gt;&lt;div&gt;&lt;span style=&quot;color: #569cd6;&quot;&gt;const&lt;/span&gt; &lt;span style=&quot;color: #4fc1ff;&quot;&gt;ctx&lt;/span&gt; &lt;span style=&quot;color: #d4d4d4;&quot;&gt;=&lt;/span&gt; &lt;span style=&quot;color: #dcdcaa;&quot;&gt;useContext&lt;/span&gt;(&lt;span style=&quot;color: #4fc1ff;&quot;&gt;AuthContext&lt;/span&gt;);&lt;/div&gt;&lt;div&gt;&amp;nbsp; &lt;span style=&quot;color: #9cdcfe;&quot;&gt;console&lt;/span&gt;.&lt;span style=&quot;color: #dcdcaa;&quot;&gt;log&lt;/span&gt;(&lt;span style=&quot;color: #ce9178;&quot;&gt;'ctx ==='&lt;/span&gt;, &lt;span style=&quot;color: #4fc1ff;&quot;&gt;ctx&lt;/span&gt;);&lt;/div&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;" vertex="1" parent="1">
+                    <mxGeometry x="-75" y="620" width="380" height="50" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>
