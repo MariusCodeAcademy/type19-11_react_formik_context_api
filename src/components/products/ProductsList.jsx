@@ -1,10 +1,7 @@
 // pariusst ir atvaizuodti produktus is https://dummyjson.com/products
 
-import axios from 'axios';
-import { useEffect } from 'react';
-import { useState } from 'react';
-import Btn from '../UI/Btn';
 import { Link } from 'react-router-dom';
+import useApiData from '../../hooks/useApiData';
 
 const singleProdItem = {
   id: 1,
@@ -30,32 +27,22 @@ const singleProdItem = {
 // yra funkcija kurioje mes galim naudoti hooks
 // turi prasideti zodeliu 'use'
 
-function useApiData(url) {
-  const [data, setData] = useState({});
-
-  useEffect(() => {
-    axios
-      .get(url)
-      .then((resp) => {
-        console.log('resp ===', resp);
-        // const prodArr = resp.data
-        setData(resp.data);
-      })
-      .catch((error) => {
-        console.warn('ivyko klaida:', error);
-      });
-  }, [url]);
-
-  return [data, setData];
-}
-
 function ProductsList() {
-  const [respObj, setRespObj] = useApiData('https://dummyjson.com/products');
+  const [respObj, setRespObj, isLoading, errorHappened] = useApiData(
+    'https://dummyjson.com/products',
+  );
+
+  console.log('errorHappened ===', errorHappened);
+  if (errorHappened.status === 404) {
+    // set error
+  }
 
   const mainProductsArr = respObj.products || [];
 
   console.log('mainProductsArr ===', mainProductsArr);
   // console.log(' mainProductsArr[0] ===', JSON.stringify(mainProductsArr[0]));
+
+  if (isLoading) return <h2 className='text-5xl'>Loading...</h2>;
 
   return (
     <div>
