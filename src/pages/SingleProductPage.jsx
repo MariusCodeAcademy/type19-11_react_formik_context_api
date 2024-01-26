@@ -27,10 +27,10 @@ export default function SingleProductPage() {
       {isLoading && <h2>Loading...</h2>}
       <div className='grid grid-cols-2 gap-8'>
         <div className='left'>
-          <img src={currentObj.thumbnail} alt={currentObj.title} />
-          <ul className='flex flex-wrap gap-2 '>
+          <img className='w-full' src={currentObj.thumbnail} alt={currentObj.title} />
+          <ul className='grid grid-cols-3 gap-2 '>
             {currentObj.images?.map((imgUrl) => (
-              <li className='basis-24 flex-grow' key={imgUrl}>
+              <li className='' key={imgUrl}>
                 <img src={imgUrl} alt={imgUrl} />
               </li>
             ))}
