@@ -1,3 +1,5 @@
+import ProductsList from '../components/products/ProductsList';
+
 export default function ProductPage() {
   return (
     <div className='container'>
@@ -7,6 +9,7 @@ export default function ProductPage() {
         dolorem iure voluptatum optio quod, laboriosam, molestiae illum, beatae distinctio corporis
         cumque placeat laudantium accusantium aspernatur consequatur exercitationem labore. Adipisci
       </p>
+      <ProductsList />
     </div>
   );
 }
